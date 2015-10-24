@@ -1,6 +1,7 @@
 
 var gulp           = require('gulp'),
     less           = require('gulp-less'),
+     autoprefixer   = require('gulp-autoprefixer'),
     sourcemaps     = require('gulp-sourcemaps');
     plumber        = require('gulp-plumber');
     browserSync    = require('browser-sync'),
@@ -11,8 +12,8 @@ var gulp           = require('gulp'),
 gulp.task('compile-less', function() {  
   gulp.src('src/less/main.less')
     .pipe(plumber())
-    .pipe(less())
-    
+    .pipe(autoprefixer('last 2 versions'))
+    .pipe(less()) 
     .pipe(gulp.dest('dist/less'))
     .pipe(reload({stream: true}));
 });
